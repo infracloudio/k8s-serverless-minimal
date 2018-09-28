@@ -19,7 +19,7 @@ appConfigMap=${appName}-config
 
 # Create k8s deployment
 sed  "s/NAME/${appName}/g" deployment.yaml > dep_temp.yaml
-sed  -i "s/IMAGE/${imageName}/g" dep_temp.yaml
+sed  -i "s/IMAGE/${imageDestination}/g" dep_temp.yaml
 
 # Create kaniko deployment
 sed  "s/IMAGEDESTINATION/${imageDestination}/g" kaniko.yaml > kaniko_temp.yaml
