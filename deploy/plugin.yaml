@@ -6,3 +6,7 @@ flags:
     shorthand: "u"
     desc: "Delete the app"
     defValue: "false"
+  - name: "appdir"
+    shorthand: "d"
+    desc: "Location of application directory"
+    defValue: ""
