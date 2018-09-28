@@ -1,1 +1,2 @@
-# k8s-serverless-minimal
+# serverless
+Minimal serverless platform on top of Kubernetes
