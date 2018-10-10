@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+  annotations:
+     sidecar.istio.io/inject: "false"
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=/root/ws/Dockerfile",
+            "--context=dir:///root/ws",
+            "--destination=IMAGEDESTINATION"]
+    volumeMounts:
+      - name: kaniko-secret
+        mountPath: /secret
+      - name: APPCONFIGMAP
+        mountPath: /root/ws
+    env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /secret/kaniko-secret.json
+  restartPolicy: Never
+  volumes:
+    - name: kaniko-secret
+      secret:
+        secretName: kaniko-secret
+    - name: APPCONFIGMAP
+      configMap:
+        name: APPCONFIGMAP

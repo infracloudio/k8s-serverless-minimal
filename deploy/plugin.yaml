@@ -1,0 +1,12 @@
+name: "deploy"
+shortDesc: "Deploys given app"
+command: "./deploy.sh"
+flags:
+  - name: "undeploy"
+    shorthand: "u"
+    desc: "Delete the app"
+    defValue: "false"
+  - name: "appdir"
+    shorthand: "d"
+    desc: "Location of application directory"
+    defValue: ""
